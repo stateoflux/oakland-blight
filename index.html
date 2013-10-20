@@ -2,23 +2,26 @@
 <html>
 <head>
   <meta name "description" content="[Masonry playground]" />
-  <script src="bower_components/jquery/jquery.min.js"></script>
-  <script src="bower_components/masonry/masonry.js"></script>  
+  <link href="app.css" rel="stylesheet">
   <meta charset=utf-8 />
 <title>Oakland Blight Project</title>
 </head>
 <body>
   <h1>Oakland Blight Project</h1>
   <div id="container" class="masonry">
+  <div class="grid-sizer"></div>
   <div class="item"></div>
-  <div class="item w2"></div>
+  <div class="item h2"></div>
   <div class="item"></div>
   <div class="item"></div>
-  <div class="item w2 h2"></div>
+  <div class="item h2"></div>
   <div class="item h2"></div>
   <div class="item"></div>
   <div class="item h2"></div>
   <div class="item"></div>  
 </div>  
+  <script src="bower_components/jquery/jquery.min.js"></script>
+  <script src="masonry.pkgd.min.js"></script>  
+  <script src="app.js"></script>  
 </body>
 </html>

@@ -1,15 +1,16 @@
-masonry .item {
-  width: 60px;
-  height: 80px;
+
+// .masonry { width: 1140px; }
+.masonry .grid-sizer { width: 220px; }
+.masonry .item {
+  width: 220px;
+  height: 240px;
   background-color: #ccc;
   border-radius: 2px;
   margin-bottom: 10px;
 }
-
 .item.w2 {
   width: 130px;
 }
-
 .item.h2 {
-  height: 120px;
+  height: 340px;
 }

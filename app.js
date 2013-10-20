@@ -1,7 +1,7 @@
 var containter = document.querySelector('#container');
 
 var masonry = new Masonry(container, {
-  columnWidth: 60,
+  columnWidth: '.grid-sizer',
   itemSelector: '.item',
   gutter: 10
 });
