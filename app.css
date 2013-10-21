@@ -1,16 +1,16 @@
 
-// .masonry { width: 1140px; }
+/* .masonry { width: 1140px; } */
+.masonry { list-style: none; }
 .masonry .grid-sizer { width: 220px; }
 .masonry .item {
   width: 220px;
-  height: 240px;
   background-color: #ccc;
   border-radius: 2px;
   margin-bottom: 10px;
 }
-.item.w2 {
-  width: 130px;
-}
-.item.h2 {
-  height: 340px;
+
+.masonry .item img {
+  border: none;
+  outline: none;
+  max-width: 100%;
 }
