@@ -11,6 +11,15 @@
   <h1>Oakland Blight Project</h1>
   <ul id="container" class="masonry">
     <li class="grid-sizer"></li>
+    <!-- issue template -->
+    <script id="issue-template" type="text/x-handlebars-template" >
+      {{#if issue_photo_url}}
+      <li class="item">
+        <img src="{{issue_photo_url}}" />
+      </li>
+      {{/if}}
+    </script>
+    <!-- 
     <li class="item">
       <img src="http://seeclickfix.com/files/issue_images/0015/9927/tia507307705.jpg" />
     </li>
@@ -37,9 +46,10 @@
     </li>
     <li class="item">
       <img src="http://seeclickfix.com/files/issue_images/0015/9927/tia507307705.jpg" />
-    </li>  
+    </li> -->  
   </ul>  
   <script src="bower_components/jquery/jquery.min.js"></script>
+  <script src="bower_components/handlebars/handlebars.js"></script>
   <script src="bower_components/eventie/eventie.js"></script>  
   <script src="bower_components/eventEmitter/EventEmitter.js"></script>  
   <script src="bower_components/imagesloaded/imagesloaded.js"></script>  
