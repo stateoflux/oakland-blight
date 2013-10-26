@@ -11,6 +11,7 @@ $(document).ready(function() {
     "&page=1",
     "&num_results=10",
     "&search=illegal+dumping",
+    "issues.created_at",
     "&callback=?"
   ];
 

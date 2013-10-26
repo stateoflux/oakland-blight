@@ -1,6 +1,14 @@
 
 /* .masonry { width: 1140px; } */
-.masonry { list-style: none; }
+.container--main {
+  width: 1156px;
+  margin: 0 auto;
+}
+.masonry { 
+  list-style: none;
+  padding: 0;        // Reset the default ul padding
+  margin: 0;         // Reset the default ul margin
+}
 .masonry .grid-sizer { width: 275px; }
 .masonry .item {
   width: 275px;
