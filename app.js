@@ -27,6 +27,7 @@ $(document).ready(function() {
   var defs = [];
 
   // TODO: add error callbacks to the AJAX calls
+  // add some type of loading spinner.
 
   $.getJSON(list_url.join(""))
     .done(function (issues) {
@@ -37,16 +38,18 @@ $(document).ready(function() {
             console.log("adding issue to frag: " + issue_detail[0].public_filename);
             list_fragment += (issueTemplate({
               issue_photo_url: issue_detail[0].public_filename
-            })); 
+            }));
           }));
       });
       $.when.apply(null, defs)
-        .done(doLayout);
+        .done(function() {
+          console.log("about to append fragment");
+          $container.append($(list_fragment));
+          doLayout();
+        });
     });
 
   function doLayout() {
-    console.log("about to append fragment");
-    $container.append($(list_fragment));
     $container.imagesLoaded()
       .done(function() {
         console.log("about to start masonry layout");
@@ -58,7 +61,7 @@ $(document).ready(function() {
       })
       .fail(function() {
         console.log("an image did not load?");
-      })
-  }
+      });
+ }
 });
 
