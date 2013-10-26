@@ -9,45 +9,14 @@
 </head>
 <body>
   <h1>Oakland Blight Project</h1>
-  <ul id="container" class="masonry">
-    <li class="grid-sizer"></li>
-    <!-- issue template -->
-    <script id="issue-template" type="text/x-handlebars-template" >
-      {{#if issue_photo_url}}
-      <li class="item">
-        <img src="{{issue_photo_url}}" />
-      </li>
-      {{/if}}
-    </script>
-    <!-- 
+  <ul id="container" class="masonry"></ul>
+  <script id="issue-template" type="text/x-handlebars-template" >
+    {{#if issue_photo_url}}
     <li class="item">
-      <img src="http://seeclickfix.com/files/issue_images/0015/9927/tia507307705.jpg" />
+      <img src="{{issue_photo_url}}" />
     </li>
-    <li class="item">
-      <img src="http://seeclickfix.com/files/issue_images/0015/9926/1382308675045.jpg" />
-    </li>
-    <li class="item">
-      <img src="http://seeclickfix.com/files/issue_images/0015/9925/tia-1655925644.jpg" />
-    </li>
-    <li class="item">
-      <img src="http://seeclickfix.com/files/issue_images/0015/9924/1382308247843.jpg" />
-    </li>
-    <li class="item">
-      <img src="http://seeclickfix.com/files/issue_images/0015/9893/1382291425276.jpg" />
-    </li>
-    <li class="item">
-      <img src="http://seeclickfix.com/files/issue_images/0015/9879/1382282777776.jpg" />
-    </li>
-    <li class="item">
-      <img src="http://seeclickfix.com/files/issue_images/0015/9831/CAM00233.jpg" />
-    </li>
-    <li class="item">
-      <img src="http://seeclickfix.com/files/issue_images/0015/9820/1382227539779.jpg" />
-    </li>
-    <li class="item">
-      <img src="http://seeclickfix.com/files/issue_images/0015/9927/tia507307705.jpg" />
-    </li> -->  
-  </ul>  
+    {{/if}}
+  </script>
   <script src="bower_components/jquery/jquery.min.js"></script>
   <script src="bower_components/handlebars/handlebars.js"></script>
   <script src="bower_components/eventie/eventie.js"></script>  

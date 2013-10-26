@@ -1,8 +1,7 @@
 "use strict";
 
 $(document).ready(function() {
-  var masonry;
-  var container = document.querySelector("#container");
+  var $container = $("#container");
   var list_url = [
     "http://seeclickfix.com/api/issues.json",
     "?at=Oakland,+CA",
@@ -15,47 +14,51 @@ $(document).ready(function() {
     "&callback=?"
   ];
 
+  // compile issue template
+  var issueTemplate = Handlebars.compile($('#issue-template').html());
+
+  var list_fragment = '<li class="grid-sizer"></li>';
   var issue_url = function(id) {
     var url = "http://seeclickfix.com/api/issues/";
 
     return url + id + ".json?callback=?";
   };
 
-  // compile issue template
-  var issueTemplate = Handlebars.compile($('#issue-template').html());
+  var defs = [];
 
-  // var issues = [];
+  // TODO: add error callbacks to the AJAX calls
 
-  $.getJSON(list_url.join(""), function(data) {
-    data.forEach(function(issue) {
-      $.getJSON(issue_url(issue.issue_id), function(data) {
-        // issues.push(data);
-        // how should I process each issue object?
-        // for now, all I want is the url to the issue's photo
-        // once i get my urls, how should i proceed?
-        // i suppose I should add list elements programmatically
-        // at each iteration to a document fragment.  at completion
-        // of the loop, I will then insert the fragment into the
-        // main document.  This should kick of the image download
-        // process.  imagesLoaded will then tell masonry to layout.
-        // I should probably use handlerbars for the photo template.
-        console.log(data[0]);
-        $('#container').append(issueTemplate({
-          issue_photo_url: data[0].public_filename
-        }));
+  $.getJSON(list_url.join(""))
+    .done(function (issues) {
+      console.log(issues);
+      issues.forEach(function(issue) {
+        defs.push($.getJSON(issue_url(issue.issue_id))
+          .done(function(issue_detail) {
+            console.log("adding issue to frag: " + issue_detail[0].public_filename);
+            list_fragment += (issueTemplate({
+              issue_photo_url: issue_detail[0].public_filename
+            })); 
+          }));
       });
+      $.when.apply(null, defs)
+        .done(doLayout);
     });
-  });
 
-
-  /* Init Masonry once the images are loaded
-   * ======================================================================= */
-
-  imagesLoaded(container, function() {
-    masonry = new Masonry(container, {
-      columnWidth: ".grid-sizer",
-      itemSelector: ".item",
-      gutter: 14
-    });
-  });
+  function doLayout() {
+    console.log("about to append fragment");
+    $container.append($(list_fragment));
+    $container.imagesLoaded()
+      .done(function() {
+        console.log("about to start masonry layout");
+        $container.masonry({
+          columnWidth: ".grid-sizer",
+          itemSelector: ".item",
+          gutter: 14
+        });
+      })
+      .fail(function() {
+        console.log("an image did not load?");
+      })
+  }
 });
+
