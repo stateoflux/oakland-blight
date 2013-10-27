@@ -6,10 +6,10 @@ $(document).ready(function() {
     "http://seeclickfix.com/api/issues.json",
     "?at=Oakland,+CA",
     "&zoom=10",
-    "&start=48",
+    "&start=168",
     "&end=0",
     "&page=1",
-    "&num_results=10",
+    "&num_results=20",
     "&search=illegal+dumping",
     "issues.created_at",
     "&callback=?"
@@ -48,12 +48,20 @@ $(document).ready(function() {
         });
     });
 
-    /* 10/26/2013 - 03:46pm */
+/* HELPER FUNCTIONS 
+ * ========================================================================= */
+
+  function stripUsa(address) {
+    if (address.indexOf("USA") !== -1) {
+      address = address.slice(0, -5);
+    }
+    return address;
+  }
 
   function createIssueTemplateObj(issue_detail) {
     return {
       photo_url: issue_detail.public_filename,
-      address: issue_detail.address,
+      address: stripUsa(issue_detail.address),
       desc: issue_detail.description,
       created_at: moment(issue_detail.created_at, "MM/DD/YYYY - hh:mma").fromNow()
     };
