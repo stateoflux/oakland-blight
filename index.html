@@ -12,9 +12,14 @@
   <div class="container--main">
     <ul id="container" class="masonry"></ul>
     <script id="issue-template" type="text/x-handlebars-template" >
-      {{#if issue_photo_url}}
+      {{#if photo_url}}
       <li class="item">
-        <img src="{{issue_photo_url}}" />
+        <img src="{{photo_url}}" />
+        <div class="issue-details">
+          <p>{{address}}</p>
+          <p>{{desc}}</p>
+          <p>{{created_at}}</p> 
+        </div>
       </li>
       {{/if}}
     </script>
@@ -24,6 +29,7 @@
   <script src="bower_components/eventie/eventie.js"></script>  
   <script src="bower_components/eventEmitter/EventEmitter.js"></script>  
   <script src="bower_components/imagesloaded/imagesloaded.js"></script>  
+  <script src="bower_components/momentjs/min/moment.min.js"></script>  
   <script src="masonry.pkgd.min.js"></script>  
   <script src="app.js"></script>  
 </body>

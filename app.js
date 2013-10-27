@@ -32,14 +32,12 @@ $(document).ready(function() {
 
   $.getJSON(list_url.join(""))
     .done(function (issues) {
-      console.log(issues);
+      // console.log(issues);
       issues.forEach(function(issue) {
         defs.push($.getJSON(issue_url(issue.issue_id))
           .done(function(issue_detail) {
-            console.log("adding issue to frag: " + issue_detail[0].public_filename);
-            list_fragment += (issueTemplate({
-              issue_photo_url: issue_detail[0].public_filename
-            }));
+            console.log(issue_detail[0]);
+            list_fragment += (issueTemplate(createIssueTemplateObj(issue_detail[0])));
           }));
       });
       $.when.apply(null, defs)
@@ -49,6 +47,17 @@ $(document).ready(function() {
           doLayout();
         });
     });
+
+    /* 10/26/2013 - 03:46pm */
+
+  function createIssueTemplateObj(issue_detail) {
+    return {
+      photo_url: issue_detail.public_filename,
+      address: issue_detail.address,
+      desc: issue_detail.description,
+      created_at: moment(issue_detail.created_at, "MM/DD/YYYY - hh:mma").fromNow()
+    };
+  }
 
   function doLayout() {
     $container.imagesLoaded()
