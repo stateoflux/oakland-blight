@@ -3,7 +3,18 @@
 body {
   background-color: #efefef;
 }
-.container--main {
+h1 {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  background-color: #fff;
+  text-align: center;
+  margin-top: 0;
+  padding: 12px 0;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.33);
+}
+.container-main {
+  padding-top: 65px;
   width: 1156px;
   margin: 0 auto;
 }
@@ -18,9 +29,8 @@ body {
   width: 275px;
   border-radius: 2px;
   margin-bottom: 14px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);  // <offset-x> <offset-y> <blur-radius>? <spread-radius>? <color>?
 }
-
 .masonry .item img {
   border: none;
   outline: none;
@@ -28,7 +38,6 @@ body {
   max-width: 100%;
   border-radius: 2px 2px 0 0;
 }
-
 .masonry .item .issue-details {
   display: block;
   font-size: 13px;
@@ -41,7 +50,6 @@ body {
   max-width: 100%;
   margin: 8px 0;
 }
-
 .lighten {
   color: rgba(0, 0, 0, 0.3);
 }
