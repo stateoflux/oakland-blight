@@ -32,11 +32,11 @@ $(document).ready(function() {
 
   $.getJSON(list_url.join(""))
     .done(function (issues) {
-      console.log(issues);
+      // console.log(issues);
       issues.forEach(function(issue) {
         defs.push($.getJSON(issue_url(issue.issue_id))
           .done(function(issue_detail) {
-            console.log("adding issue to frag: " + issue_detail[0].public_filename);
+            console.log(issue_detail[0]);
             list_fragment += (issueTemplate({
               issue_photo_url: issue_detail[0].public_filename
             }));

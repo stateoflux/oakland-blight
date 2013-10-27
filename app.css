@@ -1,5 +1,8 @@
 
 /* .masonry { width: 1140px; } */
+body {
+  background-color: #efefef;
+}
 .container--main {
   width: 1156px;
   margin: 0 auto;
@@ -11,17 +14,29 @@
 }
 .masonry .grid-sizer { width: 275px; }
 .masonry .item {
+  background-color: #fff;
   width: 275px;
-  background-color: #ccc;
   border-radius: 2px;
   margin-bottom: 14px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
 }
-
-.item.w2 { width: 450px; }
 
 .masonry .item img {
   border: none;
   outline: none;
   display: block;
+  max-width: 100%;
+  border-radius: 2px 2px 0 0;
+}
+
+.masonry .item .issue-details {
+  display: block;
+  font-size: 13px;
+  color: #333;
+  border-top: 1px #ccc solid;
+  padding: 0 10px 0 10px;
+  border-radius: 0 0 2px 2px;
+}
+.masonry .item .issue-details p {
   max-width: 100%;
 }
