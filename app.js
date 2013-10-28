@@ -36,7 +36,8 @@ $(document).ready(function() {
       issues.forEach(function(issue) {
         defs.push($.getJSON(issue_url(issue.issue_id))
           .done(function(issue_detail) {
-            console.log(issue_detail[0]);
+            // console.log(issue_detail[0]);
+            console.log(issue_detail[0].lat, issue_detail[0].lng);
             list_fragment += (issueTemplate(createIssueTemplateObj(issue_detail[0])));
           }));
       });
@@ -47,6 +48,11 @@ $(document).ready(function() {
           doLayout();
         });
     });
+
+
+    /* MAP CODE
+     * ==================================================================== 
+
 
 /* HELPER FUNCTIONS 
  * ========================================================================= */
@@ -60,6 +66,7 @@ $(document).ready(function() {
 
   function createIssueTemplateObj(issue_detail) {
     return {
+      id: issue_detail.issue_id,
       photo_url: issue_detail.public_filename,
       address: stripUsa(issue_detail.address),
       desc: issue_detail.description,

@@ -9,7 +9,7 @@
 </head>
 <body class="texture">
   <div class="container-header">
-    <h1>Oakland Blight Project</h1>
+    <h2>Oakland Blight Project</h2>
   </div>
   <div class="container-main">
     <ul id="container" class="masonry"></ul>
@@ -17,10 +17,11 @@
       {{#if photo_url}}
       <li class="item">
         <img src="{{photo_url}}" />
+        <div id="map-canvas-{{id}}"></div>
         <div class="issue-details">
           <p>{{address}}</p>
           <p>{{desc}}</p>
-          <p class="lighten">Submitted {{created_at}}</p> 
+          <p class="lighten30">Submitted {{created_at}}</p> 
         </div>
       </li>
       {{/if}}

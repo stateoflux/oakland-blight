@@ -3,18 +3,22 @@
 body {
   background-color: #efefef;
 }
-h1 {
+h2 {
   position: fixed;
   width: 100%;
   z-index: 100;
   background-color: #fff;
   text-align: center;
   margin-top: 0;
-  padding: 12px 0;
+  padding: 9px 0;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.33);
 }
+#map-canvas {
+  width: 1156px;
+  margin: 0 auto;
+}
 .container-main {
-  padding-top: 65px;
+  padding-top: 50px;
   width: 1156px;
   margin: 0 auto;
 }
@@ -50,6 +54,6 @@ h1 {
   max-width: 100%;
   margin: 8px 0;
 }
-.lighten {
+.lighten30 {
   color: rgba(0, 0, 0, 0.3);
 }
