@@ -2,7 +2,7 @@
 
 var obp = {
   config: {
-    $container: $("container"),
+    $container: $('#container'),
     $issue_template: $('#issue-template'),
     list_fragment: '<li class="grid-sizer"></li>',
     scf_list_url: [
@@ -44,9 +44,7 @@ var obp = {
               obp.config.list_fragment += (issueTemplate(createIssueTemplateObj(issue_detail[0])));
             }));
         });
-        console.log("inside build...:" + obp.config.addingPromises.state());
         obp.config.addingPromises.resolve();
-        console.log("inside build...: " + obp.config.addingPromises.state());
       });
 
     /* Helper functions * ===================================================================== */
