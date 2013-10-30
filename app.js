@@ -4,9 +4,10 @@ var obp = {
   config: {
     $container: $('#container'),
     $issue_template: $('#issue-template'),
+    $ajax_fail: $('#ajax-fail'),
     list_fragment: '<li class="grid-sizer"></li>',
     scf_list_url: [
-      "http://seeclickfix.com/api/issues.json",
+      "http://seeclickfx.com/api/issues.json",
       "?at=Oakland,+CA",
       "&zoom=10",
       "&start=168",
@@ -24,6 +25,7 @@ var obp = {
   },
 
   init: function() {
+    obp.config.$ajax_fail.hide();
     obp.buildIssueList();
     obp.config.addingPromises
       .done(obp.layoutIssueList);
@@ -45,9 +47,11 @@ var obp = {
             }));
         });
         obp.config.addingPromises.resolve();
-      });
+      })
+      .fail(obp.ajaxFail);
 
-    /* Helper functions * ===================================================================== */
+    /* Helper functions 
+     * ===================================================================== */
     function scf_detail_url(id) {
       return "http://seeclickfix.com/api/issues/" + id + ".json?callback=?";
     }
@@ -76,8 +80,11 @@ var obp = {
         console.log("about to append fragment");
         obp.config.$container.append($(obp.config.list_fragment));
         doLayout();
-      });
+      })
+      .fail(obp.ajaxFail);
 
+    /* Uses the Masonry.js library to create the pinterest style layout 
+     * ===================================================================== */
     function doLayout() {
       obp.config.$container.imagesLoaded()
         .done(function() {
@@ -92,8 +99,15 @@ var obp = {
           console.log("an image did not load?");
         });
     }
-  }
+  },
 
+  ajaxFail: function() {
+    console.log("Sorry.  Looks like something went wrong.  Please try again later");
+    obp.config.$ajax_fail
+      .append('<p>Sorry.  Looks like something went wrong.</p>')
+      .append('<img src="public/images/oakland_cranes.jpg" />')
+      .show();
+  }
 };  // end of obp definition
 
 $(document).ready(function() {

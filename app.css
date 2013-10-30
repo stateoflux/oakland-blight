@@ -57,3 +57,12 @@ h2 {
 .lighten30 {
   color: rgba(0, 0, 0, 0.3);
 }
+
+#ajax-fail {
+  width: 640px;
+  margin: 0 auto;
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);  // <offset-x> <offset-y> <blur-radius>? <spread-radius>? <color>?
+  font-size: 20px; 
+  background-color: #fff
+}
