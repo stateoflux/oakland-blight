@@ -7,7 +7,7 @@ var obp = {
     $ajax_fail: $('#ajax-fail'),
     list_fragment: '<li class="grid-sizer"></li>',
     scf_list_url: [
-      "http://seeclickfx.com/api/issues.json",
+      "http://seeclickfix.com/api/issues.json",
       "?at=Oakland,+CA",
       "&zoom=10",
       "&start=168",
@@ -21,10 +21,23 @@ var obp = {
     promises: [],
     // to indicate when the process of adding promises to the above array
     // is complete
-    addingPromises: $.Deferred()
+    addingPromises: $.Deferred(),
+    spinner: [
+      '<div>',
+      '<div class="ui-spinner">',
+      '<span class="side side-left">',
+      '<span class="fill"></span>',
+      '</span>',
+      '<span class="side side-right">',
+      '<span class="fill"></span>',
+      '</span>',
+      '</div>',
+      '</div>'
+    ] 
   },
 
   init: function() {
+    obp.showHideSpinner();
     obp.config.$ajax_fail.hide();
     obp.buildIssueList();
     obp.config.addingPromises
@@ -107,13 +120,30 @@ var obp = {
       .append('<p>Sorry.  Looks like something went wrong.</p>')
       .append('<img src="public/images/oakland_cranes.jpg" />')
       .show();
+  },
+
+  showHideSpinner: function() {
+    console.log("inside showHideSpinner");
+    var $spinner = $(obp.config.spinner.join(""));
+
+    $spinner
+      .insertBefore(obp.config.$container)
+      .addClass("spinner")
+      .hide();
+
+    $(document).ajaxStart(function() {
+        $spinner.show();
+      })
+      .ajaxStop(function() {
+        $spinner
+          .fadeOut("slow", function() {
+            $(this).remove();
+          });
+      });
   }
 };  // end of obp definition
 
 $(document).ready(function() {
-  // TODO: add error callbacks to the AJAX calls
-  // add some type of loading spinner.
   obp.init();
-
 });
 
