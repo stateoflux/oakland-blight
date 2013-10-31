@@ -1,5 +1,6 @@
 body {
   background-color: #efefef;
+  font-family: Helvetica, Arial, sans-serif;
 }
 h2 {
   position: fixed;
@@ -8,8 +9,8 @@ h2 {
   background-color: #FFF;
   color: #005E00;
   text-align: center;
-  margin-top: 0;
-  padding: 9px 0;
+  margin: 0;
+  padding: 0.2917em 0;   /* 8px/24px */
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.33);
 }
 #map-canvas {
@@ -17,7 +18,7 @@ h2 {
   margin: 0 auto;
 }
 .container-main {
-  padding-top: 60px;
+  padding-top: 3.8125em;  /* 61px/16px ( 61px = height of header + 14px gutter) */ 
   width: 1156px;
   margin: 0 auto;
 }
