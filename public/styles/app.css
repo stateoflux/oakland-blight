@@ -54,8 +54,14 @@ h2 {
   max-width: 100%;
   margin: 8px 0;
 }
-.lighten30 {
-  color: rgba(0, 0, 0, 0.3);
+.desc, .created_at {
+  font-weight: 300;
+}
+.address {
+  color: hsla(215, 84%, 40%, 1);
+}
+.created_at {
+  color: rgba(0, 0, 0, 0.4);
 }
 
 #ajax-fail {

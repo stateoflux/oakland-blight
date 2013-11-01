@@ -13,7 +13,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link href="bower_components/normalize-css/normalize.css" rel="stylesheet">
     <link href="bower_components/html5-boilerplate/css/main.css" rel="stylesheet">
-    <link href="public/styles/ouroboros/stylesheets/obp_ouroboros.css" rel="stylesheet">
+    <link href="public/styles/obp_ouroboros.css" rel="stylesheet">
     <link href="public/styles/app.css" rel="stylesheet">
     <!-- <script src="js/vendor/modernizr-2.6.2.min.js"></script> -->
   </head>
@@ -33,9 +33,9 @@
           <img src="{{photo_url}}" />
           <div id="map-canvas-{{id}}"></div>
           <div class="issue-details">
-            <p>{{address}}</p>
-            <p>{{desc}}</p>
-            <p class="lighten30">Submitted {{created_at}}</p> 
+            <p class="address">{{address}}</p>
+            <p class="desc">{{desc}}</p>
+            <p class="created_at">Submitted {{created_at}}</p> 
           </div>
         </li>
         {{/if}}
